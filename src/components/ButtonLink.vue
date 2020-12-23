@@ -1,0 +1,53 @@
+<template>
+  <button  class="_button-link" @click="$router.push(destination)" :disabled="disabled">
+    <img v-if="iconSrc" :src="iconSrc"/>
+    <slot></slot>
+  </button>
+</template>
+
+<script>
+    export default {
+        name: 'ButtonLink',
+        props: {
+            iconSrc: {
+                type: String,
+                default: null
+            },
+            destination: {
+              type: String,
+              default: '/'
+            },
+            disabled: {
+              type: Boolean,
+              default: () => false
+            }
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+  ._button-link {
+    appearance: none;
+    border: none;
+    outline: none;
+    display: block;
+    border-radius: 8px;
+    position: relative;
+    max-width: 319px;
+    width: 100%;
+    background-color: $blue;
+    font-size: 18px;
+    height: 54px;
+    linne-height: 54px;
+    color: #fff;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 12%;
+      transform: translateY(-50%);
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+</style>
