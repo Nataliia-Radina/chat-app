@@ -20,7 +20,7 @@
     import Avatar from '@/components/Avatar'
 
     export default {
-        name: 'Profile',
+        name: 'ChatDetails',
         components: {
             Avatar
         },

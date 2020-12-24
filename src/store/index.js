@@ -54,7 +54,7 @@ export default new Vuex.Store({
         context.commit('setChatList', data)
       })
     },
-    sendMessage(context, message) {
+    sendMessage (context, message) {
       const messageObj = {
         id: context.state.chatData.messages.length + 1,
           message_type: "text",

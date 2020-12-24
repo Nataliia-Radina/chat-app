@@ -3,11 +3,15 @@
         <div v-if="showTime" class="_time-info">
             {{ message.time_sent }}
         </div>
-        <div    v-if="message.message_type === 'text'"
-                class="_message-text"
-                :class="[message.is_user_message ? '_is-user-message': '_is-friend-message']">
+
+        <div
+            v-if="message.message_type === 'text'"
+            class="_message-text"
+            :class="[message.is_user_message ? '_is-user-message': '_is-friend-message']"
+        >
             <div v-html="message.message_data"></div>
         </div>
+
         <div v-if="message.message_type === 'images'" class="_message-images">
             <img v-for="image in message.message_data" :src="getImageSrc(image.src)" :key="image.id" />
         </div>

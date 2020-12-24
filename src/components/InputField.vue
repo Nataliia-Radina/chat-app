@@ -1,19 +1,23 @@
 <template>
     <div class="_input-wrapper">
-        <input  :class="{'is-invalid': isInvalid}"
-                :type="inputType"
-                :placeholder="placeholder"
-                v-model="value"
-                :disabled="disabled"
-                @input="onInput"
-                @keyup.enter="onEnterKeyup"
+        <input
+            :class="{'is-invalid': isInvalid}"
+            :type="inputType"
+            :placeholder="placeholder"
+            v-model="value"
+            :disabled="disabled"
+            @input="onInput"
+            @keyup.enter="onEnterKeyup"
         >
+
         <div v-if="isPasswordInput" class="_visibility-icon" @click.prevent="toggleVisibility">
             <img  :src="visibilityIcon" />
         </div>
+
         <span v-if="isMessageInput" class="_message-input" @click.prevent="submitMessage">
             <img  :src="sendIcon" />
         </span>
+
         <p v-if="!isEmpty && isInvalid" class="_error-message"> {{ errorMessage }}</p>
     </div>
 </template>
@@ -54,10 +58,6 @@
                 isValueHidden: true
             }
         },
-        created () {
-            this.visibilityIcon = require('@/assets/icons/icon-eye.svg')
-            this.sendIcon = require('@/assets/icons/icon-send.svg')
-        },
         computed: {
             isPasswordInput () {
                 return this.type === 'password'
@@ -73,6 +73,10 @@
                 return this.type
             }
         },
+        created () {
+            this.visibilityIcon = require('@/assets/icons/icon-eye.svg')
+            this.sendIcon = require('@/assets/icons/icon-send.svg')
+        },
         methods: {
             toggleVisibility () {
                 if (this.value) {
@@ -87,13 +91,13 @@
                 const validationExpression = new RegExp(this.validationRule)
                 return !validationExpression.test(this.value)
             },
-            submitMessage() {
+            submitMessage () {
                 if (this.value) {
                     this.$emit('submitMessage', this.value)
                     this.value = ''
                 }
             },
-            onEnterKeyup() {
+            onEnterKeyup () {
                 this.isMessageInput && this.submitMessage()
             }
         }

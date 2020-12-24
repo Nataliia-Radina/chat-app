@@ -2,7 +2,7 @@
     export default {
         name: 'ImageSrc',
         methods: {
-            getImageSrc(image) {
+            getImageSrc (image) {
                 if (image) {
                     return require(`@/assets/images/${image}`)
                 }

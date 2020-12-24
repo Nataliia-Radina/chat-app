@@ -5,16 +5,18 @@
             <h1>{{ chatData.chat_name }}</h1>
             <Avatar :imageSrc="getImageSrc(chatData.chat_img)" size="sm" class="_avatar-with-status" />
         </div>
+
         <div v-if="chatData.messages">
             <ChatMessage
-                    v-for="(message, index) in chatData.messages"
-                    :key="message.id"
-                    :message="message"
-                    :showTime="displayMessageTime(index)"
+                v-for="(message, index) in chatData.messages"
+                :key="message.id"
+                :message="message"
+                :showTime="displayMessageTime(index)"
             />
         </div>
+
         <div class="_bottom-content">
-        <InputField placeholder="Message" @submitMessage="sendMessage" isMessageInput />
+            <InputField placeholder="Message" @submitMessage="sendMessage" isMessageInput />
             <ButtonLink :iconSrc="addIcon" class="_round-button" disabled />
         </div>
     </div>
@@ -37,20 +39,20 @@
             ButtonLink,
             ChatMessage
         },
+        computed: {
+            ...mapState(['chatData']),
+        },
         created () {
             this.searchIcon = require('@/assets/icons/icon-search.svg')
             this.addIcon = require('@/assets/icons/icon-more.svg')
             this.getChatData()
         },
-        computed: {
-            ...mapState(['chatData']),
-        },
         methods: {
-            displayMessageTime(index) {
+            displayMessageTime (index) {
                 return index === 0 || this.chatData.messages[index].time_sent
                     !== this.chatData.messages[index - 1].time_sent
             },
-            sendMessage(val) {
+            sendMessage (val) {
                 this.sendMessage(val)
                 this.getChatData()
             },

@@ -4,10 +4,12 @@
             <BackButton destination="/chat-list" />
             <h1>Profile</h1>
         </div>
+
         <Avatar :imageSrc="getImageSrc(user.user_img)" size="lg" />
         <InputField :placeholder="user.user_name" disabled />
         <InputField :placeholder="user.profile_description" disabled />
         <InputField class="_status-input" :placeholder="user.user_status" disabled />
+
         <ButtonLink destination="/chat-list">
             Complete
         </ButtonLink>
@@ -29,11 +31,11 @@
             BackButton,
             ButtonLink
         },
-        created () {
-            this.getUserData()
-        },
         computed: {
             ...mapState(['user']),
+        },
+        created () {
+            this.getUserData()
         },
         methods: {
             ...mapActions(['getUserData'])

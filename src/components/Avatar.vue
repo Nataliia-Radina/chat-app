@@ -1,12 +1,16 @@
 <template>
-    <div :class="`_avatar _${size}`">
-        <img v-if="imageSrc" class="_avatar-image" :src="imageSrc" alt="avatar" />
+    <div :class="`_avatar _${size}`" @click="$emit('click')">
+        <img
+            v-if="imageSrc"
+            class="_avatar-image"
+            :src="imageSrc"
+            alt="avatar" />
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Logo',
+        name: 'Avatar',
         props: {
             imageSrc: {
                 type: String,
@@ -20,7 +24,6 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     ._avatar {
         display: inline-block;

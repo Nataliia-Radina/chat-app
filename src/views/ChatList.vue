@@ -1,15 +1,22 @@
 <template>
     <div class="_chat-container">
         <div class="_top-content">
-            <Avatar :imageSrc="avatarImage" size="sm" class="_avatar-with-status" />
+            <Avatar
+                :imageSrc="avatarImage"
+                size="sm"
+                class="_avatar-with-status"
+                @click="$router.push('/profile')"
+            />
             <img :src="searchIcon">
         </div>
+
         <div class="_toggle"><span class="_active">Chat</span><span>Call</span></div>
-            <div @click="$router.push('chat/1')">
-                <ChatDetails v-for="chat in chatList" :key="chat.id" :data="chat"></ChatDetails>
-            </div>
-        <ButtonLink destination="/chat/1" :iconSrc="newChatIcon" class="_round-button">
-        </ButtonLink>
+
+        <div @click="$router.push('chat/1')">
+            <ChatDetails v-for="chat in chatList" :key="chat.id" :data="chat"></ChatDetails>
+        </div>
+
+        <ButtonLink destination="/chat/1" :iconSrc="newChatIcon" class="_round-button" />
     </div>
 </template>
 
@@ -26,14 +33,14 @@
             ChatDetails,
             ButtonLink
         },
+        computed: {
+            ...mapState(['chatList'])
+        },
         created () {
             this.avatarImage = require('@/assets/images/erke-rysdauletov.jpg')
             this.searchIcon = require('@/assets/icons/icon-search.svg')
             this.newChatIcon = require('@/assets/icons/icon-chat.svg')
             this.getChatList()
-        },
-        computed: {
-            ...mapState(['chatList']),
         },
         methods: {
             ...mapActions(['getChatList'])

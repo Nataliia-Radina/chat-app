@@ -42,25 +42,24 @@ const chatData = {
             is_user_message: false},
         {id: 5, message_type: "text", time_sent: "11:43", message_data: "😱😱😱😱😱 so beautiful",
             is_user_message: true},
-        {id: 6, message_type: "text", time_sent: "11:43", message_data: "You need to see it by yourself. <br/> When you come?",
-            is_user_message: false
-        },
+        {id: 6, message_type: "text", time_sent: "11:43",
+            message_data: "You need to see it by yourself. <br/> When you come?", is_user_message: false}
     ]
 }
 
 const chatListData = [
     {id: 1, chat_name: "Annette Black", last_message: "Hey, did you talk to her?", last_chatted: "2min ago",
-        chat_images:["christopher-campbell.jpg"]},
+        chat_images: ["christopher-campbell.jpg"]},
     {id: 2, chat_name: "Hey guuurll", last_message: "Brb, watch some Dark here", last_chatted: "5min ago",
-        chat_images:["tamara-bellis.jpg", "sigmund-jzz.jpg"]},
+        chat_images: ["tamara-bellis.jpg", "sigmund-jzz.jpg"]},
     {id: 3, chat_name: "Cameron Williamson", last_message: "Ok, Cya.  🤗?", last_chatted: "35min ago",
-        chat_images:["sigmund-jzz.jpg"]},
+        chat_images: ["sigmund-jzz.jpg"]},
     {id: 4, chat_name: "Jane Cooper", last_message: "Thanks, ill call you there.", last_chatted: "1d ago",
-        chat_images:["tamara-bellis.jpg"]},
+        chat_images: ["tamara-bellis.jpg"]},
     {id: 5, chat_name: "Brennda Smily", last_message: "Sent a picture", last_chatted: "1d ago",
-        chat_images:["ana-itonishvili.jpg"]},
+        chat_images: ["ana-itonishvili.jpg"]},
     {id: 6, chat_name: "Jacob Jones", last_message: "Miss a call", last_chatted: "1d ago",
-        chat_images:["john-arano.jpg"]},
+        chat_images: ["john-arano.jpg"]},
 ]
 
 export default {

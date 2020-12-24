@@ -16,12 +16,12 @@
                 default: '/'
             }
         },
-        data() {
+        data () {
             return {
                 prevRoute: null
             }
         },
-        beforeRouteEnter(to, from, next) {
+        beforeRouteEnter (to, from, next) {
             next(vm => {
                 vm.prevRoute = from
             })

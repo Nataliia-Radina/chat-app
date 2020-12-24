@@ -1,40 +1,46 @@
 <template>
-  <div class="_home-page _container">
-      <Logo />
-    <ButtonLink destination="/login" :iconSrc="faceBookIcon">
-        <span>Sign in with Google</span>
-    </ButtonLink>
-    <ButtonLink destination="/login" :iconSrc="googleIcon">
-      Sign in with Facebook
-    </ButtonLink>
-    <ButtonLink destination="/login" :iconSrc="appleIcon">
-      Sign in with Apple
-    </ButtonLink>
-    <div class="_divider">or</div>
-    <ButtonLink destination="/login">
-      Continue with email
-    </ButtonLink>
-    <p>Already have an account?</p>
-    <a href="/">Sign up here</a>
-  </div>
+    <div class="_home-page _container">
+        <Logo />
+
+        <ButtonLink destination="/login" :iconSrc="faceBookIcon">
+            <span>Sign in with Google</span>
+        </ButtonLink>
+
+        <ButtonLink destination="/login" :iconSrc="googleIcon">
+            Sign in with Facebook
+        </ButtonLink>
+
+        <ButtonLink destination="/login" :iconSrc="appleIcon">
+            Sign in with Apple
+        </ButtonLink>
+
+        <div class="_divider">or</div>
+
+        <ButtonLink destination="/login">
+            Continue with email
+        </ButtonLink>
+
+        <p>Already have an account?</p>
+        <a href="/" class="_primary-link">Signup here</a>
+    </div>
 </template>
 
 <script>
-  import Logo from '@/components/Logo'
-  import ButtonLink from '@/components/ButtonLink'
+    import Logo from '@/components/Logo'
+    import ButtonLink from '@/components/ButtonLink'
 
-export default {
-  name: 'Home',
-  components: {
-    ButtonLink,
-    Logo
-  },
-  created () {
-    this.faceBookIcon = require('@/assets/icons/icon-facebook.svg')
-    this.googleIcon = require('@/assets/icons/icon-google.svg')
-    this.appleIcon = require('@/assets/icons/icon-apple.svg')
-  }
-}
+    export default {
+        name: 'Home',
+        components: {
+            ButtonLink,
+            Logo
+        },
+        created () {
+            this.faceBookIcon = require('@/assets/icons/icon-facebook.svg')
+            this.googleIcon = require('@/assets/icons/icon-google.svg')
+            this.appleIcon = require('@/assets/icons/icon-apple.svg')
+        }
+    }
 </script>
 
 <style scoped lang="scss">

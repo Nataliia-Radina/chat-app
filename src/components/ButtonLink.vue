@@ -1,8 +1,8 @@
 <template>
-  <button  class="_button-link" @click="$router.push(destination)" :disabled="disabled">
-    <img v-if="iconSrc" :src="iconSrc"/>
-    <slot></slot>
-  </button>
+    <button  class="_button-link" @click="$router.push(destination)" :disabled="disabled">
+        <img v-if="iconSrc" :src="iconSrc"/>
+        <slot></slot>
+    </button>
 </template>
 
 <script>
@@ -14,12 +14,12 @@
                 default: null
             },
             destination: {
-              type: String,
-              default: '/'
+                type: String,
+                default: '/'
             },
             disabled: {
-              type: Boolean,
-              default: () => false
+                type: Boolean,
+                default: false
             }
         }
     }
