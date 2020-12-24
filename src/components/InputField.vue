@@ -97,7 +97,7 @@
             max-width: 319px;
             border: 1px solid $light-black;
             background-color: #fff;
-            border-radius: 8px;
+            border-radius: $border-radius;
             font-size: 14px;
             &::placeholder {
                 font-weight: 500;

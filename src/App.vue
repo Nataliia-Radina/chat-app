@@ -23,6 +23,9 @@ body {
   height: 100%;
   width: 100%;
 }
+h1, h2 {
+  margin: 0;
+}
 ._container {
   max-width: 319px;
   margin: 0 auto;

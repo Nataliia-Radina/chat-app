@@ -75,7 +75,7 @@
     margin: 0 auto;
   }
   h1 {
-    font-size: 16px;
+    font-size: $h1-font-size;
     margin-bottom: 40px;
   }
   ._logo {

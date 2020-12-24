@@ -29,20 +29,13 @@
                 type: Object,
                 required: true
             }
-        },
-        created () {
-
-        },
-        methods: {
-            getImageSrc(image) {
-                return require(`@/assets/images/${image}`)
-            }
         }
     }
 </script>
 
 <style scoped lang="scss">
     ._chat-details-container {
+        cursor: pointer;
         position: relative;
         padding: 10px 28px;
         display: flex;

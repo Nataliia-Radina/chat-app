@@ -42,11 +42,10 @@
         outline: none;
         display: inline-block;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 30px;
         line-height: 30px;
         color: $blue;
-        margin-bottom: 30px;
         background-color: #fff;
         span {
             display: inline-block;

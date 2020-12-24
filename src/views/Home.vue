@@ -52,7 +52,7 @@ export default {
   ._button-link {
       color: $black;
       background: #fff;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 60px;
       height: 60px;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);

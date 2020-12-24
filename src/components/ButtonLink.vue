@@ -31,7 +31,7 @@
     border: none;
     outline: none;
     display: block;
-    border-radius: 8px;
+    border-radius: $border-radius;
     position: relative;
     max-width: 319px;
     width: 100%;

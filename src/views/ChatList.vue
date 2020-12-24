@@ -5,7 +5,9 @@
             <img :src="searchIcon">
         </div>
         <div class="_toggle"><span class="_active">Chat</span><span>Call</span></div>
-        <ChatDetails v-for="chat in data" :key="chat.id" :data="chat"></ChatDetails>
+            <div @click="$router.push('chat/1')">
+                <ChatDetails v-for="chat in chatList" :key="chat.id" :data="chat"></ChatDetails>
+            </div>
         <ButtonLink destination="/chat/1" :iconSrc="newChatIcon" class="_round-button">
         </ButtonLink>
     </div>
@@ -15,9 +17,10 @@
     import ButtonLink from '@/components/ButtonLink'
     import Avatar from '@/components/Avatar'
     import ChatDetails from '@/components/ChatDetails'
+    import { mapState, mapActions } from 'vuex'
 
     export default {
-        name: 'Profile',
+        name: 'ChatList',
         components: {
             Avatar,
             ChatDetails,
@@ -27,20 +30,13 @@
             this.avatarImage = require('@/assets/images/erke-rysdauletov.jpg')
             this.searchIcon = require('@/assets/icons/icon-search.svg')
             this.newChatIcon = require('@/assets/icons/icon-chat.svg')
-            this.data = [
-                {id: 1, chat_name: "Annette Black", last_message: "Hey, did you talk to her?", last_chatted: "2min ago",
-                    chat_images:["christopher-campbell.jpg"]},
-                {id: 2, chat_name: "Hey guuurll", last_message: "Brb, watch some Dark here", last_chatted: "5min ago",
-                    chat_images:["tamara-bellis.jpg", "sigmund-jzz.jpg"]},
-                {id: 3, chat_name: "Cameron Williamson", last_message: "Ok, Cya.  🤗?", last_chatted: "35min ago",
-                    chat_images:["sigmund-jzz.jpg"]},
-                {id: 4, chat_name: "Jane Cooper", last_message: "Thanks, ill call you there.", last_chatted: "1d ago",
-                    chat_images:["tamara-bellis.jpg"]},
-                {id: 5, chat_name: "Brennda Smily", last_message: "Sent a picture", last_chatted: "1d ago",
-                    chat_images:["ana-itonishvili.jpg"]},
-                {id: 6, chat_name: "Jacob Jones", last_message: "Miss a call", last_chatted: "1d ago",
-                    chat_images:["john-arano.jpg"]},
-            ]
+            this.getChatList()
+        },
+        computed: {
+            ...mapState(['chatList']),
+        },
+        methods: {
+            ...mapActions(['getChatList'])
         }
     }
 </script>
@@ -81,7 +77,7 @@
         width: 327px;
         padding: 6px;
         background: $light-gray;
-        border-radius: 8px;
+        border-radius: $border-radius;
         box-sizing: border-box;
         margin: 0 auto 24px auto;
         span {
@@ -94,8 +90,8 @@
                 color: $black;
                 width: 158px;
                 height: 40px;
-                border-radius: 8px;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: $border-radius;
+                box-shadow:  $box-shadow;
             }
         }
     }
@@ -105,7 +101,7 @@
         width: 80px;
         height: 80px;
         border-radius: 50%;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow:  $box-shadow;
     }
 </style>
 

@@ -1,12 +1,13 @@
 <template>
-    <div class="_container">
+    <div class="_container" v-if="user">
         <div class="_top-content">
-            <BackButton /><h1>Profile</h1>
+            <BackButton destination="/chat-list" />
+            <h1>Profile</h1>
         </div>
-        <Avatar :imageSrc="avatarImage" size="lg" />
-        <InputField placeholder="Name" disabled />
-        <InputField placeholder="Hello" disabled />
-        <InputField class="_status-input" placeholder="Available" disabled />
+        <Avatar :imageSrc="getImageSrc(user.user_img)" size="lg" />
+        <InputField :placeholder="user.user_name" disabled />
+        <InputField :placeholder="user.profile_description" disabled />
+        <InputField class="_status-input" :placeholder="user.user_status" disabled />
         <ButtonLink destination="/chat-list">
             Complete
         </ButtonLink>
@@ -18,6 +19,7 @@
     import BackButton from '@/components/BackButton'
     import InputField from '@/components/InputField'
     import Avatar from '@/components/Avatar'
+    import { mapState, mapActions } from 'vuex'
 
     export default {
         name: 'Profile',
@@ -28,7 +30,13 @@
             ButtonLink
         },
         created () {
-            this.avatarImage = require('@/assets/images/erke-rysdauletov.jpg')
+            this.getUserData()
+        },
+        computed: {
+            ...mapState(['user']),
+        },
+        methods: {
+            ...mapActions(['getUserData'])
         }
     }
 </script>
@@ -36,6 +44,7 @@
 <style scoped lang="scss">
     ._top-content {
         padding-top: 64px;
+        padding-bottom: 30px;
         text-align: left;
         position: relative;
     }
@@ -58,7 +67,7 @@
         margin: 0;
         display: inline-block;
         position: absolute;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 30px;
         margin-bottom: 40px;
         left: 50%;
