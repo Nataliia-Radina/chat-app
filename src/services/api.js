@@ -15,7 +15,7 @@ const getChats = () => mockFetch(chatListData)
 
 
 const userData = {
-    id: 7,
+    id: 888,
     user_img: "erke-rysdauletov.jpg",
     user_name: "Suzan Winterson",
     profile_description: "Today is a better day",

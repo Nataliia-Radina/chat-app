@@ -6,10 +6,14 @@
                 v-model="value"
                 :disabled="disabled"
                 @input="onInput"
+                @keyup.enter="onEnterKeyup"
         >
         <div v-if="isPasswordInput" class="_visibility-icon" @click.prevent="toggleVisibility">
             <img  :src="visibilityIcon" />
         </div>
+        <span v-if="isMessageInput" class="_message-input" @click.prevent="submitMessage">
+            <img  :src="sendIcon" />
+        </span>
         <p v-if="!isEmpty && isInvalid" class="_error-message"> {{ errorMessage }}</p>
     </div>
 </template>
@@ -34,6 +38,10 @@
                 type: Boolean,
                 default: false
             },
+            isMessageInput: {
+                type: Boolean,
+                default: false
+            },
             errorMessage: {
                 type: String,
                 default: ''
@@ -48,6 +56,7 @@
         },
         created () {
             this.visibilityIcon = require('@/assets/icons/icon-eye.svg')
+            this.sendIcon = require('@/assets/icons/icon-send.svg')
         },
         computed: {
             isPasswordInput () {
@@ -77,6 +86,15 @@
             validateInput () {
                 const validationExpression = new RegExp(this.validationRule)
                 return !validationExpression.test(this.value)
+            },
+            submitMessage() {
+                if (this.value) {
+                    this.$emit('submitMessage', this.value)
+                    this.value = ''
+                }
+            },
+            onEnterKeyup() {
+                this.isMessageInput && this.submitMessage()
             }
         }
     }
@@ -110,6 +128,9 @@
                 &.is-invalid {
                     outline-color: $red;
                 }
+            }
+            &:disabled {
+                cursor: auto;
             }
             &.is-invalid {
                 border-color: $red;
@@ -154,6 +175,20 @@
             background-image: url('../assets/icons/icon-dropdown.svg');
             background-repeat: no-repeat;
             background-position: 95% center;
+        }
+    }
+    ._message-input {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 52px;
+        height: 54px;
+        cursor: pointer;
+        img {
+            left: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
         }
     }
 </style>

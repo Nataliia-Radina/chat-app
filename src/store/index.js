@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import API from '@/services/api'
+import { timeNow } from '@/services/utils'
 
 Vue.use(Vuex)
 
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     setErrorText (state, text) {
       state.errorText = text
+    },
+    addMessageToChat (state, message) {
+      Vue.set(state.chatData.messages, state.chatData.messages.length, message)
     }
   },
   actions: {
@@ -49,6 +53,16 @@ export default new Vuex.Store({
       API.getChats().then((data) => {
         context.commit('setChatList', data)
       })
+    },
+    sendMessage(context, message) {
+      const messageObj = {
+        id: context.state.chatData.messages.length + 1,
+          message_type: "text",
+          time_sent: timeNow(),
+          message_data: message,
+          is_user_message: true
+      }
+      context.commit('addMessageToChat', messageObj)
     }
   }
 })

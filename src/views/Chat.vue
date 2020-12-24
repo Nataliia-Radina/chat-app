@@ -13,7 +13,10 @@
                     :showTime="displayMessageTime(index)"
             />
         </div>
-        <ButtonLink :iconSrc="addIcon" class="_round-button" disabled />
+        <div class="_bottom-content">
+        <InputField placeholder="Message" @submitMessage="sendMessage" isMessageInput />
+            <ButtonLink :iconSrc="addIcon" class="_round-button" disabled />
+        </div>
     </div>
 </template>
 
@@ -22,12 +25,14 @@
     import Avatar from '@/components/Avatar'
     import BackButton from '@/components/BackButton'
     import ChatMessage from '@/components/ChatMessage'
+    import InputField from '@/components/InputField'
     import { mapState, mapActions } from 'vuex'
 
     export default {
         name: 'Chat',
         components: {
             Avatar,
+            InputField,
             BackButton,
             ButtonLink,
             ChatMessage
@@ -45,7 +50,11 @@
                 return index === 0 || this.chatData.messages[index].time_sent
                     !== this.chatData.messages[index - 1].time_sent
             },
-            ...mapActions(['getChatData'])
+            sendMessage(val) {
+                this.sendMessage(val)
+                this.getChatData()
+            },
+            ...mapActions(['getChatData', 'sendMessage'])
         }
     }
 </script>
@@ -81,13 +90,22 @@
             z-index: 5;
         }
     }
+    ._input-wrapper {
+        width: 249px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
     ._button-link {
-        margin: 50px 28px 0 auto;
         text-align: center;
         width: 60px;
         height: 60px;
         border-radius: 50%;
         box-shadow:  $box-shadow;
+    }
+    ._bottom-content {
+        display: flex;
+        align-items: center;
+        margin: 50px 28px 0 28px;
     }
 </style>
 
