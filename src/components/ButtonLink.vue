@@ -38,7 +38,7 @@
     background-color: $blue;
     font-size: 18px;
     height: 54px;
-    linne-height: 54px;
+    line-height: 54px;
     color: #fff;
     img {
       position: absolute;
@@ -48,6 +48,12 @@
     }
     &:hover {
       cursor: pointer;
+    }
+    &._round-button {
+      img {
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 </style>

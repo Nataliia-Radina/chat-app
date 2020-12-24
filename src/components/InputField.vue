@@ -84,7 +84,6 @@
 
 <style scoped lang="scss">
     ._input-wrapper {
-        position: relative;
         color: $black;
         font-weight: 700;
         position: relative;
@@ -128,6 +127,33 @@
             font-weight: 500;
             font-size: 12px;
             color: $red;
+        }
+    }
+    ._status-input {
+        &:before {
+            content: '';
+            position: absolute;
+            background-color: $green;
+            border-radius: 50%;
+            top: 50%;
+            left: 18px;
+            height: 18px;
+            width: 18px;
+            transform: translateY(-50%);
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            right: 54px;
+            height: 44px;
+            top: 5px;
+            border-right: 1px solid $light-black;
+        }
+        input {
+            padding-left: 48px;
+            background-image: url('../assets/icons/icon-dropdown.svg');
+            background-repeat: no-repeat;
+            background-position: 95% center;
         }
     }
 </style>
