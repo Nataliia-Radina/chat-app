@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import API from '@/services/api'
+import VuexPersistence from 'vuex-persist'
 import { timeNow } from '@/services/utils'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+})
+
+
+export const state  = () => ({
     user: {
       id: null,
       user_img: '',
@@ -17,41 +22,52 @@ export default new Vuex.Store({
     chatData: {},
     chatList: [],
     errorText: ''
-  },
-  mutations: {
+})
+
+export const mutations = {
     setUser (state, user) {
-      state.user = { ...state.user, ...user }
+        state.user = { ...state.user, ...user }
     },
     setChatData (state, chatData) {
-      state.chatData =  { ...chatData }
+        state.chatData =  { ...chatData }
     },
     setChatList (state, chatList) {
-      state.chatList = chatList
+        state.chatList = chatList
     },
     setErrorText (state, text) {
-      state.errorText = text
+        state.errorText = text
     },
     addMessageToChat (state, message) {
-      Vue.set(state.chatData.messages, state.chatData.messages.length, message)
+        Vue.set(state.chatData.messages, state.chatData.messages.length, message)
     }
-  },
-  actions: {
+}
+
+export const actions = {
     getUserData (context) {
       API.getUser().then((data) => {
+        context.commit('setErrorText', '')
         context.commit('setUser', data)
+      })
+      .catch(error => {
+        context.commit('setErrorText', error.message)
       })
     },
     getChatData (context) {
       API.getChat().then((data) => {
+        context.commit('setErrorText', '')
         context.commit('setChatData', data)
       })
       .catch(error => {
-        context.commit('setErrorText', error)
+        context.commit('setErrorText', error.message)
       })
     },
     getChatList (context) {
       API.getChats().then((data) => {
+        context.commit('setErrorText', '')
         context.commit('setChatList', data)
+      })
+      .catch(error => {
+        context.commit('setErrorText', error.message)
       })
     },
     sendMessage (context, message) {
@@ -64,5 +80,12 @@ export default new Vuex.Store({
       }
       context.commit('addMessageToChat', messageObj)
     }
-  }
+}
+
+
+export default new Vuex.Store({
+    state,
+    plugins: [vuexLocal.plugin],
+    mutations,
+    actions
 })

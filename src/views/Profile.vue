@@ -13,6 +13,7 @@
         <ButtonLink destination="/chat-list">
             Complete
         </ButtonLink>
+        <ErrorMessage />
     </div>
 </template>
 

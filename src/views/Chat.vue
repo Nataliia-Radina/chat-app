@@ -19,6 +19,7 @@
             <InputField placeholder="Message" @submitMessage="sendMessage" isMessageInput />
             <ButtonLink :iconSrc="addIcon" class="_round-button" disabled />
         </div>
+        <ErrorMessage />
     </div>
 </template>
 
@@ -77,20 +78,6 @@
     }
     h1 {
         font-size: $h2-font-size;
-    }
-    ._avatar-with-status {
-        &:before {
-            content: '';
-            border-radius: 50%;
-            background-color: $green;
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 2px solid #fff;
-            right: 0;
-            bottom: 0;
-            z-index: 5;
-        }
     }
     ._input-wrapper {
         width: 249px;

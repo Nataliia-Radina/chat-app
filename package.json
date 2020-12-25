@@ -2,16 +2,27 @@
   "name": "chat-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nataliia-radina.github.io/chat-app/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "add": "^2.0.6",
+    "cookie": "^0.4.1",
     "core-js": "^3.6.5",
+    "js-cookie": "^2.2.1",
+    "or": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "vuex": "^3.4.0",
+    "vuex-persist": "^3.1.3",
+    "vuex-persistedstate": "^4.0.0-beta.1",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,6 +35,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "gh-pages": "^3.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "sass": "^1.26.5",
     "sass-loader": "^10.1.0",
     "vue-template-compiler": "^2.6.11"
@@ -41,39 +54,80 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "curly": [2, "all"],
+      "curly": [
+        2,
+        "all"
+      ],
       "indent": "off",
       "newline-per-chained-call": "error",
-      "keyword-spacing": ["error", { "before": true , "after": true }],
-      "space-before-function-paren": ["error", "always"],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ],
       "space-before-blocks": "error",
-      "eqeqeq": ["error", "always"],
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
       "space-infix-ops": "error",
-      "comma-spacing": ["error", { "before": false, "after": true }],
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
       "brace-style": "error",
-      "key-spacing": ["error", { "beforeColon": false }],
+      "key-spacing": [
+        "error",
+        {
+          "beforeColon": false
+        }
+      ],
       "no-constant-condition": "error",
       "no-unneeded-ternary": "error",
       "no-whitespace-before-property": "error",
       "arrow-parens": "off",
       "comma-dangle": "off",
       "generator-star-spacing": "off",
-      "max-len": ["error", { "code": 120 }],
+      "max-len": [
+        "error",
+        {
+          "code": 120
+        }
+      ],
       "no-mixed-operators": "off",
       "vue/order-in-components": "error",
-      "vue/script-indent": ["error", 4, {
-        "baseIndent": 1
-      }],
-      "vue/html-indent": ["error", 4],
+      "vue/script-indent": [
+        "error",
+        4,
+        {
+          "baseIndent": 1
+        }
+      ],
+      "vue/html-indent": [
+        "error",
+        4
+      ],
       "vue/singleline-html-element-content-newline": "off",
       "prefer-template": "error",
-      "vue/max-attributes-per-line": ["error", {
-        "singleline": 3,
-        "multiline": {
-          "max": 1,
-          "allowFirstLine": false
+      "vue/max-attributes-per-line": [
+        "error",
+        {
+          "singleline": 3,
+          "multiline": {
+            "max": 1,
+            "allowFirstLine": false
+          }
         }
-      }]
+      ]
     },
     "overrides": [
       {

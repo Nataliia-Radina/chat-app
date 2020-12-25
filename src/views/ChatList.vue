@@ -17,6 +17,7 @@
         </div>
 
         <ButtonLink destination="/chat/1" :iconSrc="newChatIcon" class="_round-button" />
+        <ErrorMessage />
     </div>
 </template>
 
@@ -63,20 +64,6 @@
     }
     ._chat-page {
 
-    }
-    ._avatar-with-status {
-        &:before {
-            content: '';
-            border-radius: 50%;
-            background-color: $green;
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border: 2px solid #fff;
-            right: 0;
-            bottom: 0;
-            z-index: 5;
-        }
     }
     ._toggle {
         display: flex;
